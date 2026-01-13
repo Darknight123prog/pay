@@ -21,6 +21,14 @@ app.use(express.urlencoded({ extended: true }));
 // DB connection
 ConnectDB();
 
+// const path = require('path');
+// app.use(express.static(path.join(__dirname, 'dist')));
+
+// // Catch-all route for React SPA (payment, checkout, etc.)
+// app.get('/*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+// });;
+
 // Test route
 app.get("/", (req, res) => {
   res.send("welcome to the backend");

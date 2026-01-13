@@ -21,6 +21,8 @@ app.use(express.urlencoded({ extended: true }));
 // DB connection
 ConnectDB();
 
+
+
 // const path = require('path');
 // app.use(express.static(path.join(__dirname, 'dist')));
 
@@ -30,9 +32,19 @@ ConnectDB();
 // });;
 
 // Test route
-app.get("/", (req, res) => {
-  res.send("welcome to the backend");
+// app.get("/", (req, res) => {
+//   res.send("welcome to the backend");
+// });
+const path = require('path');
+
+// Serve static frontend files
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// Catch-all for React SPA
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
+
 
 // Payment routes
 app.use("/api/payment", require("./Routes/paymentRoutes"));
